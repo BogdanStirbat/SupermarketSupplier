@@ -35,10 +35,7 @@ export class LoginService {
       {headers: headers}
     ).subscribe({
       next: resp => {
-        console.log('Success!');
-        console.log(resp);
         let accessToken = resp['access_token'];
-        console.log(accessToken);
 
         const headers = new HttpHeaders()
                            .append('Content-Type', 'application/json')

@@ -1,0 +1,21 @@
+<div *ngIf="!authenticationService.isAuthenticated()">
+  <nav>
+    <a routerLink="/login">Login</a>
+    <a routerLink="/signup">Sign up</a>
+  </nav>
+</div>
+
+<div *ngIf="authenticationService.isRegularUser()">
+  <nav>
+    <a routerLink="/change-password">Change password</a>
+    <a routerLink="/logout">Log out</a>
+  </nav>
+</div>
+
+<div *ngIf="authenticationService.isManagerUser()">
+  <nav>
+    <a routerLink="/add-item">Add item</a>
+    <a routerLink="/change-password">Change password</a>
+    <a routerLink="/logout">Log out</a>
+  </nav>
+</div>

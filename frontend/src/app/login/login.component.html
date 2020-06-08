@@ -1,5 +1,3 @@
-<p>login works!</p>
-
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
   <label>
     Username:
@@ -14,11 +12,11 @@
   <button type="submit">Submit</button>
 </form>
 
-<div *ngIf="!authenticationService.isAuthenticated">
+<div *ngIf="!authenticationService.isAuthenticated()">
   <p>Currently not logged in</p>
 </div>
 
-<div *ngIf="authenticationService.isAuthenticated">
+<div *ngIf="authenticationService.isAuthenticated()">
   <p>Hello, {{authenticationService.user.username }}</p>
   <p>Your role is {{authenticationService.user.role }}</p>
 </div>

@@ -8,11 +8,15 @@ import { catchError, retry } from 'rxjs/operators';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
+import { NavigationComponent } from './navigation/navigation.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    NavigationComponent,
+    LogoutComponent
   ],
   imports: [
     BrowserModule,
