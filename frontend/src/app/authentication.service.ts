@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Router } from "@angular/router";
 
 import { User } from './user';
 
@@ -9,7 +10,7 @@ export class AuthenticationService {
   public user: User = null;
   public accessToken: string = null;
 
-  constructor() {
+  constructor(private router: Router,) {
     let accessToken = localStorage.getItem('accessToken');
     let userId = localStorage.getItem('userId');
     let userName = localStorage.getItem('userName');
@@ -41,6 +42,8 @@ export class AuthenticationService {
     localStorage.setItem('userId', this.user.id.toString());
     localStorage.setItem('userName', this.user.username);
     localStorage.setItem('userRole', this.user.role);
+
+    this.router.navigate(['./']);
   }
 
   public logout(): void {
@@ -51,5 +54,7 @@ export class AuthenticationService {
     localStorage.removeItem('userId');
     localStorage.removeItem('userName');
     localStorage.removeItem('userRole');
+
+    this.router.navigate(['./']);
   }
 }
