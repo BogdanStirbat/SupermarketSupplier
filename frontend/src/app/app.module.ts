@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { NavigationComponent } from './navigation/navigation.component';
 import { LogoutComponent } from './logout/logout.component';
 import { ProductsComponent } from './products/products.component';
+import { CreateproductComponent } from './createproduct/createproduct.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { ProductsComponent } from './products/products.component';
     LoginComponent,
     NavigationComponent,
     LogoutComponent,
-    ProductsComponent
+    ProductsComponent,
+    CreateproductComponent
   ],
   imports: [
     BrowserModule,

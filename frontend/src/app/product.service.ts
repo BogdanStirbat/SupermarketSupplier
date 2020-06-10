@@ -4,6 +4,7 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 
 import { Product } from './product';
+import { AuthenticationService } from './authentication.service';
 
 import { environment } from '../environments/environment';
 
@@ -13,7 +14,10 @@ import { environment } from '../environments/environment';
 })
 export class ProductService {
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private authenticationService: AuthenticationService
+    ) { }
 
   public getProducts(): Observable<Product[]> {
 
@@ -28,5 +32,24 @@ export class ProductService {
           return of([]);
         })
       );
+  }
+
+  public createProduct(product: Product): void {
+
+    const headers = new HttpHeaders()
+                       .append('Authorization', 'Bearer ' + this.authenticationService.accessToken)
+                       .append('Content-Type', 'application/json')
+                       .append('Accept', 'application/json');
+
+    this.http.post(`${environment.apiUrl}/api/products`, product, {headers: headers})
+        .subscribe({
+          next: resp => {
+            console.log('Successfully saved a product.');
+          },
+          error: error => {
+            console.log('An error occurred saving a product.');
+            console.log(error);
+          }
+        });
   }
 }
